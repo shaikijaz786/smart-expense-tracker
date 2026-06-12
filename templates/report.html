@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Expense Report</h1>
+
+<h2>Total Expense: ₹{{ total }}</h2>
+
+<img src="{{ url_for('static', filename='charts/expense_chart.png') }}" width="500">
+
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Category</th>
+    </tr>
+
+    {% for expense in expenses %}
+    <tr>
+        <td>{{ expense[0] }}</td>
+        <td>{{ expense[1] }}</td>
+        <td>{{ expense[2] }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br><br>
+
+<a href="/home">Add Another Expense</a>
+
+<br><br>
+
+<a href="/clear">Clear All Expenses</a>
+
+</body>
+</html>
